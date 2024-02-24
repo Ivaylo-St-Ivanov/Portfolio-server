@@ -3,7 +3,7 @@ This repository contains a server for my portfolio website.
 
 ## Tech Stack
 
-![ExpressJS](https://img.shields.io/badge/ExpressJS-black?logo=Express) ![SCSS](https://img.shields.io/badge/Nodemailer-green?logo=Nodemailer)
+![ExpressJS](https://img.shields.io/badge/ExpressJS-gray?logo=Express) ![SCSS](https://img.shields.io/badge/Nodemailer-green?logo=Nodemailer)
 
 ## 🚀 About "Portfolio" server
 
