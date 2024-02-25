@@ -1,10 +1,26 @@
 const express = require('express');
-const router = express.Router();
+const helmet = require('helmet');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const nodemailer = require('nodemailer');
+const RateLimit = require('express-rate-limit');
 
 dotenv.config();
+
+const app = express();
+
+app.disable('x-powered-by');
+app.use(helmet());
+app.use(cors());
+app.use(express.json());
+
+// Set up rate limiter: maximum of twenty requests per minute
+const limiter = RateLimit({
+    windowMs: 1 * 60 * 1000, // 1 minute
+    max: 20,
+});
+// Apply rate limiter to all requests
+app.use(limiter);
 
 const contactEmail = nodemailer.createTransport({
     service: 'gmail',
@@ -21,6 +37,8 @@ contactEmail.verify((error) => {
         console.log('Server is ready to take messages.');
     }
 });
+
+const router = express.Router();
 
 router.post('/contact', (req, res) => {
     const name = req.body.name;
@@ -66,11 +84,17 @@ router.post('/contact', (req, res) => {
 });
 
 
-const app = express();
-
-app.use(cors());
-app.use(express.json());
 app.use('/', router);
+
+
+app.use((req, res, next) => {
+    res.status(404).send("Sorry can't find that!")
+});
+
+app.use((err, req, res, next) => {
+    console.error(err.stack)
+    res.status(500).send('Something broke!')
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}...`));
