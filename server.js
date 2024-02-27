@@ -9,7 +9,11 @@ dotenv.config();
 
 const app = express();
 
-app.disable('x-powered-by');
+app.disable('x-powered-by');     // Disable the X-Powered-By header
+
+// Enable trust proxy
+app.set('trust proxy', true);
+
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
