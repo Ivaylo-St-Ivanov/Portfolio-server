@@ -3,17 +3,17 @@ This repository contains a server for my portfolio website.
 
 ## Tech Stack
 
-![ExpressJS](https://img.shields.io/badge/ExpressJS-gray?logo=Express) ![SCSS](https://img.shields.io/badge/Nodemailer-green?logo=Nodemailer)
+![ExpressJS](https://img.shields.io/badge/ExpressJS-gray?logo=Express) ![Nodemailer](https://img.shields.io/badge/Nodemailer-green?logo=Nodemailer)
 
 ## 🚀 About "Portfolio" server
 
-This server serving a contact form in my [Portfolio application](https://github.com/Ivaylo-St-Ivanov/Portfolio-server) .
-
+This server serves a contact form in my [Portfolio application](https://github.com/Ivaylo-St-Ivanov/Portfolio) .
+ 
 ## ⚡ Functionalities
 
  - the server connects to email and verifies it
- - after a correctly filled form and submit, it sends an email with the information from the form
- - sends an automatic reply to the sender
+ - when correctly filled out and submitted, the form sends an email to my email address
+ - it also automatically sends a reply to the email specified by the sender, containing the data from the form and a message confirming successful submission
 
 ## Author
 
